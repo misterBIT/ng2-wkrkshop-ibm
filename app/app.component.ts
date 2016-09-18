@@ -1,16 +1,12 @@
 import { Component } from '@angular/core';
+import { TimeComponent } from './time/time.component';
 
 @Component({
+    moduleId: module.id,
     selector: 'my-app',
-    template: `
-        <h1>Pets R Us</h1>
-        <button (click)="foo($event)">Click This</button>
-        <pet-list></pet-list>
-        <pet-input></pet-input>
-
-
-    `
+    templateUrl: 'app.template.html',
 })
+
 export class AppComponent {
   private subtitle : string = 'Welcome!';
 
@@ -25,6 +21,5 @@ export class AppComponent {
   foo(ev : any) {
     console.log(ev);
   }
-
 
  }
