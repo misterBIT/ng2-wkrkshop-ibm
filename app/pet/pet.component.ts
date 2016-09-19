@@ -1,12 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 import {PetModel} from './pet.model';
 
 @Component({
   moduleId: module.id,
   selector: 'pet',
-  template:
-  `
+  template: `
     <style>
         img {max-width:200px;}
         .awake {color:gold}
@@ -15,26 +14,27 @@ import {PetModel} from './pet.model';
         <h4>{{petModel.name | uppercase}}</h4>
         <countdown [isAwake]="petModel.isAwake" [inputTime]="petModel.nextFeedAt" (due)="feedingDue()"></countdown>
         <img [src]="petModel.imgUrl" alt="">
-        <input type="checkbox" [value]="petModel.awake" (change)="toggle.emit(petModel)" /> Awake?
-    </section>
-  `
+        <input type="checkbox" [checked]="petModel.awake" (change)="toggle.emit(petModel)" /> Awake? 
+    </section>` ////// we bind checkboxes to the checked property!
+
 })
 export class PetComponent {
 
-    private time : any;
+  private time: any;
 
-    ngOnInit(){   }
+  ngOnInit() {
+  }
 
-    @Input()
-    petModel : PetModel;
+  @Input()
+  petModel: PetModel;
 
-    @Output()
-    toggle = new EventEmitter();
+  @Output()
+  toggle = new EventEmitter<PetModel>(); //better be typed!
 
 
-    feedingDue() {
-        console.log('Pet is going to sleep!');
-        this.petModel.awake = false;
-    }
+  feedingDue() {
+    console.log('Pet is going to sleep!');
+    this.petModel.awake = false;
+  }
 
 }

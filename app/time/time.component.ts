@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core'
 
 @Component({
     selector: 'curr-time',
-    template: `<div id="curr-time">{{currTime}}</div>`
+    template: `<div>{{currTime}}</div>` //don't use id property - so we can be valid when multiple instances exist on page
 
 })
 
@@ -12,11 +12,11 @@ export class TimeComponent implements OnInit, OnDestroy{
     public currTime : Date = new Date();
 
     constructor(){
-      this.startClock();
+
     }
 
     ngOnInit(){
-
+      this.startClock(); // its better to init in ngOnInit for testability.
     }
 
     startClock(){

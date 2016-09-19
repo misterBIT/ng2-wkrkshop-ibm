@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TimeComponent } from './time/time.component';
 
 @Component({
     moduleId: module.id,
